@@ -1,14 +1,13 @@
 <template>
-  <div class="full-width center-content">
-    <hello-component name="World" />
-  </div>
+  <navbar-component/>
 </template>
 <script>
 
-import HelloComponent from './components/HelloComponent.vue'
+//import HelloComponent from './components/HelloComponent.vue'
+import NavbarComponent from './components/NavbarComponent.vue'
 export default {
     components: {
-        HelloComponent
+        NavbarComponent
     }
 }
 </script>
