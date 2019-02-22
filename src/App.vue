@@ -1,4 +1,5 @@
 <template>
+<navbar-component/>
     <div class="container">
       <div class="row">
         <div class="col s3" v-for="value in sections" :key="value.name">
@@ -8,10 +9,11 @@
     </div>
 </template>
 <script>
-
+import NavbarComponent from './components/NavbarComponent.vue'
 import CardComponent from './components/CardComponent.vue'
 export default {
     components: {
+      NavbarComponent,
         CardComponent
     },
     data() {
