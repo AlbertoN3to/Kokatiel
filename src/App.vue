@@ -1,23 +1,44 @@
 <template>
-<navbar-component/>
+  <div>
+    <app-navbar></app-navbar>
     <div class="container">
       <div class="row">
-        <div class="col s3" v-for="value in sections" :key="value.name">
-          <card-component :section="value.name" :icon="value.icon"/>
-        </div>
+        <app-chart></app-chart>
+        <app-item-list :itens="itens"></app-item-list>
       </div>
     </div>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
 </template>
+
 <script>
-import NavbarComponent from './components/NavbarComponent.vue'
-import CardComponent from './components/CardComponent.vue'
+import NavbarComponent from './components/shared/NavbarComponent.vue'
+import FooterComponent from './components/shared/FooterComponent.vue'
+import ChartComponent from './components/dashboard/ChartComponent.vue'
+import ItemListComponent from './components/dashboard/ItemListComponent.vue'
+
 export default {
-    components: {
-      NavbarComponent,
-        CardComponent
-    },
     data() {
-        return {sections : [{name : "Brinquedos", icon: "toys"}, {name : "Casa", icon : "home"}, {name : "Vestuario", icon : "wc"}, {name : "Informatica", icon : "computer"}, {name : "Games", icon : "videogame_asset"}, {name : "Eletrodomesticos", icon : "tv"}, {name : "Eletronicos", icon : "phone_iphone"}, {name : "Esportes", icon : "rowing"}, {name : "Livros", icon : "storage"}, {name : "Outros", icon : "camera"}]}
+        return {
+            itens : [
+                { name : 'Roupa'},
+                { name : 'Eletronicos'},
+                { name : 'Esportes'},
+                { name : 'Livros'},
+                { name : 'Jogos'},
+            ]
+        }
+    },
+    components: {
+        'app-navbar' : NavbarComponent,
+        'app-footer' : FooterComponent,
+        'app-chart' : ChartComponent,
+        'app-item-list' : ItemListComponent,
     }
 }
 </script>
