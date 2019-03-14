@@ -1,19 +1,13 @@
 <template>
-  <div>
-    <app-navbar></app-navbar>
-    <router-view></router-view>
-    <hr>
-    <div class="container">
+  <div class="container">
       <div class="row">
-        <app-footer></app-footer>
+        <app-chart></app-chart>
+        <app-item-list :itens="itens"></app-item-list>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
-import NavbarComponent from './components/shared/NavbarComponent.vue'
-import FooterComponent from './components/shared/FooterComponent.vue'
 import ChartComponent from './components/dashboard/ChartComponent.vue'
 import ItemListComponent from './components/dashboard/ItemListComponent.vue'
 
@@ -30,8 +24,6 @@ export default {
         }
     },
     components: {
-        'app-navbar' : NavbarComponent,
-        'app-footer' : FooterComponent,
         'app-chart' : ChartComponent,
         'app-item-list' : ItemListComponent,
     }
