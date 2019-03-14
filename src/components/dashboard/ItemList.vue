@@ -1,14 +1,30 @@
 <template>
-    <li class="list-group-item">
-        <div class="checkbox">
-            <label><input type="checkbox" :value="checkboxName"><span>{{ checkboxName }}</span></label>
-        </div>
-    </li>
+  <li class="list-group-item" @click="checkItem">
+    <div class="checkbox">
+      <label><input type="checkbox" :value="checkboxName" :checked="checked"><span @click="checkItem">{{ checkboxName }}</span></label>
+    </div>
+  </li>
 </template>
 
 <script>
+import { AppBus } from '../../index.js'
+
 export default {
-    props: ['checkboxName'],
+    props: {
+        checkboxName: String,
+        checkboxActive: Boolean
+    },
+    data () {
+        return {
+            checked: this.checkboxActive
+        }
+    },
+    methods: {
+        checkItem () {
+            this.checked = !this.checked;
+            AppBus.$emit('checkedItem', this.checkboxName);
+        }
+    }
 }
 </script>
 
@@ -16,6 +32,7 @@ export default {
     span {
         margin-left: 10px;
     }
+    li, span {
+        cursor: pointer;
+    }
 </style>
-
-

@@ -1,7 +1,9 @@
 <template>
   <div>
     <app-navbar></app-navbar>
-    <router-view></router-view>
+    <div class="container">
+        <router-view></router-view>
+    </div>
     <hr>
     <div class="container">
       <div class="row">
@@ -14,27 +16,11 @@
 <script>
 import NavbarComponent from './components/shared/NavbarComponent.vue'
 import FooterComponent from './components/shared/FooterComponent.vue'
-import ChartComponent from './components/dashboard/ChartComponent.vue'
-import ItemListComponent from './components/dashboard/ItemListComponent.vue'
 
 export default {
-    data() {
-        return {
-            itens : [
-                { name : 'Roupa'},
-                { name : 'Eletronicos'},
-                { name : 'Esportes'},
-                { name : 'Livros'},
-                { name : 'Jogos'},
-            ]
-        }
-    },
     components: {
-        'app-navbar' : NavbarComponent,
-        'app-footer' : FooterComponent,
-        'app-chart' : ChartComponent,
-        'app-item-list' : ItemListComponent,
+        'app-navbar': NavbarComponent,
+        'app-footer': FooterComponent
     }
 }
 </script>
-

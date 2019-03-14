@@ -1,20 +1,57 @@
 <template>
     <div class="col-xs-12 col-sm-5">
-        <app-chart-line :chartdata="data" :options="options"></app-chart-line>
+        <app-chart :chart-data="dataCollection" :options="options"></app-chart>
     </div>
 </template>
 
 <script>
 import Chart from './ChartBar.vue'
+import { AppBus } from '../../index.js'
 
 export default {
-    data() {
+    props: {
+        itens: Array
+    },
+    data () {
         return {
-            data : {
-                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            itensActive: null,
+            dataCollection: {},
+            labels: [],
+            dataValues: [],
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        }
+    },
+    created () {
+        this.itensFilter();
+        this.loadChartValues();
+
+        AppBus.$on('checkedItem', v => {
+            this.itensFilter();
+            this.clearChartValues();
+            this.loadChartValues();
+
+            console.log(this.labels)
+            console.log(this.dataValues)
+        })
+    },
+    mounted() {
+      this.fillData();
+    },
+    methods: {
+        fillData () {
+            this.dataCollection = {
+                labels: this.labels,
                 datasets: [{
                     label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    data: this.dataValues,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -33,21 +70,30 @@ export default {
                     ],
                     borderWidth: 1
                 }]
-            },
-            options : {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true
-                        }
-                    }]
-                }
             }
+
+            console.log(this.dataCollection.datasets[0].data)
+        },
+        itensFilter () {
+            this.itensActive = this.itens.filter( (value) => {
+                return value.active === true
+            })
+        },
+        loadChartValues () {
+            this.itensActive.forEach ( (v, i) => {
+                this.labels.push(v.name)
+                this.dataValues.push(v.value)
+            })
+
+            this.fillData();
+        },
+        clearChartValues () {
+            this.labels = [];
+            this.dataValues = [];
         }
     },
     components: {
-        'app-chart-line' : Chart
+        'app-chart': Chart
     }
 }
 </script>
-

@@ -1,7 +1,7 @@
 <template>
     <div class="col-xs-12 col-sm-7">
         <ul class="list-group">
-            <item-list v-for="item in itens" :key="item.name" :checkboxName="item.name"></item-list>
+            <item-list v-for="item in itens" :key="item.name" :checkboxName="item.name" :checkboxActive="item.active"></item-list>
         </ul>
     </div>
 </template>
@@ -13,13 +13,8 @@ export default {
     props: {
         itens: Array
     },
-    data() {
-        return {
-            itens : itens
-        }
-    },
     components: {
-        'item-list' : Itens
+        'item-list': Itens
     }
 }
 </script>
@@ -27,7 +22,5 @@ export default {
 <style scoped>
     div {
         margin-top: 30px;
-    } 
+    }
 </style>
-
-
