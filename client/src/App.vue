@@ -1,7 +1,7 @@
 <template>
   <div>
     <app-navbar></app-navbar>
-    <div class="container">
+    <div class="container-fluid">
         <router-view></router-view>
     </div>
     <hr>
@@ -24,3 +24,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+  .container-fluid {
+    margin-top: 10px;
+  }
+</style>

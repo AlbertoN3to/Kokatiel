@@ -7,8 +7,9 @@
 export default {}
 </script>
 <style lang="css" scoped>
+/*background-image: linear-gradient(to right, #fe8c00, #f83600);*/
 nav {
-  background-image: linear-gradient(to right, #fe8c00, #f83600);
+  background-image: linear-gradient(to right, #6fa5fc, #5998ff)
 }
 nav span {
   color: white !important;

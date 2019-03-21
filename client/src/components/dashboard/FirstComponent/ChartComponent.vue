@@ -6,7 +6,7 @@
 
 <script>
 import Chart from './ChartBar.vue'
-import { AppBus } from '../../index.js'
+import { AppBus } from '../../../index.js'
 
 export default {
     props: {
@@ -30,20 +30,20 @@ export default {
         }
     },
     created () {
-        this.itensFilter();
-        this.loadChartValues();
-
-        AppBus.$on('checkedItem', v => {
-            this.itensFilter();
-            this.clearChartValues();
-            this.loadChartValues();
+        AppBus.$on('fCheckedItem', v => {
+            this.itensFilter()
+            this.clearChartValues()
+            this.loadChartValues()
 
             console.log(this.labels)
             console.log(this.dataValues)
         })
     },
-    mounted() {
-      this.fillData();
+    mounted () {
+        this.fillData()
+        this.itensFilter()
+        this.clearChartValues()
+        this.loadChartValues()
     },
     methods: {
         fillData () {
@@ -75,21 +75,21 @@ export default {
             console.log(this.dataCollection.datasets[0].data)
         },
         itensFilter () {
-            this.itensActive = this.itens.filter( (value) => {
+            this.itensActive = this.itens.filter((value) => {
                 return value.active === true
             })
         },
         loadChartValues () {
-            this.itensActive.forEach ( (v, i) => {
+            this.itensActive.forEach((v, i) => {
                 this.labels.push(v.name)
-                this.dataValues.push(v.value)
+                this.dataValues.push(v.sold)
             })
 
-            this.fillData();
+            this.fillData()
         },
         clearChartValues () {
-            this.labels = [];
-            this.dataValues = [];
+            this.labels = []
+            this.dataValues = []
         }
     },
     components: {
