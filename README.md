@@ -1,2 +1,2 @@
 # Kokatiel
-Projeto Faculdade - Igor e Igor
+Projeto Faculdade - Igor, Neto e Pedro
