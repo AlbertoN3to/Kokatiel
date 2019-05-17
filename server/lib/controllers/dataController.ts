@@ -4,7 +4,6 @@ import { Request, Response } from 'express';
 
 const Data = mongoose.model('Data', DataSchema);
 
-
 export class DataController {
 
     public addNewData(req: Request, res: Response) {

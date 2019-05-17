@@ -1,10 +1,12 @@
 import { DataController } from '../controllers/dataController';
+import { StatisticsController } from '../controllers/statisticsController';
 import { Request, Response, NextFunction } from 'express';
 var PRIVATE = require('../../config/private.json');
 
 export class Routes {
 
     public dataController: DataController = new DataController();
+    public statisticsController: StatisticsController = new StatisticsController();
 
     public routes(app): void {
 
@@ -19,6 +21,8 @@ export class Routes {
         //     .put(this.visitsController.updateVisit)
         //     .delete(this.visitsController.deleteVisit);
         
+        app.route('/statistics/sales')
+            .get(this.statisticsController.getSalesBySector);
     }
 }
 

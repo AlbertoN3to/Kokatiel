@@ -1,8 +1,8 @@
-import * as mongoose from 'mongoose';
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
-export const DataSchema = new Schema({
+exports.DataSchema = new Schema({
     visitorId: {
         type: String,
         required: true
@@ -16,15 +16,15 @@ export const DataSchema = new Schema({
     },
     sessionStart: {
         type: Date,
-        required:true
+        required: true
     },
     sessionEnd: {
         type: Date,
-        required:true
+        required: true
     },
     sessionTime: {
         type: Number,
-        default:0
+        default: 0
     },
     section: {
         type: String,
@@ -46,15 +46,16 @@ export const DataSchema = new Schema({
         }
     ],
     isVisit: {
-        type:Boolean,
-        required:true 
+        type: Boolean,
+        required: true
     },
     // userDefined: Schema.Types.Mixed
     userDefined: [
         {
-            name:String,
-            value:Number,
-            isBool:Boolean
+            name: String,
+            value: Number,
+            isBool: Boolean
         }
     ]
 });
+//# sourceMappingURL=dataModel.js.map
