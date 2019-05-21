@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { AppBus } from '../../index.js'
+import { AppBus } from '../../../index.js'
 
 export default {
     props: {
@@ -21,8 +21,8 @@ export default {
     },
     methods: {
         checkItem () {
-            this.checked = !this.checked;
-            AppBus.$emit('checkedItem', this.checkboxName);
+            this.checked = !this.checked
+            AppBus.$emit('fCheckedItem', this.checkboxName)
         }
     }
 }

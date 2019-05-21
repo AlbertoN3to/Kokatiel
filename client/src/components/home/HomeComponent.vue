@@ -21,13 +21,9 @@ export default {
         }
     },
     methods: {
-        validateFrom () {
-            
-        },
         submitForm () {
             this.$router.push('/dashboard')
         }
     }
 }
 </script>
-
