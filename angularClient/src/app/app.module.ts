@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { HeaderComponent } from './shared/header/header.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HeaderComponent } from './shared/header/header.component';
     BrowserModule,
     AppRoutingModule,
     ChartsModule,
-    DashboardModule
+    DashboardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

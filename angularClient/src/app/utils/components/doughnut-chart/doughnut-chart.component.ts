@@ -11,6 +11,11 @@ export class DoughnutChartComponent implements OnInit {
   @Input('chartData') public data;
   @Input('chartLabels') public labels;
   public dataType = 'pie';
+  public doughnutChartColors = [
+    {
+      backgroundColor: ['rgb(226, 27, 106)', 'rgb(187, 27, 226)', 'rgb(35, 79, 255)', 'rgb(152, 244, 66)'],
+    },
+  ];
 
   constructor() { }
 
