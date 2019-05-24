@@ -5,7 +5,7 @@ import { ChartsModule } from 'ng2-charts';
 
 import { DashboardComponent } from './dashboard.component';
 import { UtilsModule } from '../../utils/utils.module';
-import { PieChartService } from 'src/app/services/pie-chart.service';
+import { SalesService } from 'src/app/services/sales/sales.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +21,6 @@ import { PieChartService } from 'src/app/services/pie-chart.service';
     UtilsModule,
     ChartsModule
   ],
-  providers: [PieChartService]
+  providers: [SalesService]
 })
 export class DashboardModule { }

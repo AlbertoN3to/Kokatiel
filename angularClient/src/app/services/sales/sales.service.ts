@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class PieChartService {
+export class SalesService {
 
   endpoint: string = "https://ec2-18-222-30-60.us-east-2.compute.amazonaws.com:80/statistics/google.com/sales";
 
