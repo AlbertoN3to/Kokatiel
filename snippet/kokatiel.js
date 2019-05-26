@@ -1,56 +1,56 @@
 module.exports = class {
 
     constructor(){
-        this.visitorId = undefined
-        this.sessionStart = undefined
-        this.sessionEnd = undefined
-        this.section = undefined
-        this.isVisit = undefined
-        this.userDefined = undefined
+        this.visitorId = undefined;
+        this.sessionStart = undefined;
+        this.sessionEnd = undefined;
+        this.section = undefined;
+        this.isVisit = undefined;
+        this.userDefined = undefined;
     }
 
     setVisitorId(visitorId){
-        this.visitorId = visitorId
+        this.visitorId = visitorId;
     }
     setSessionStart(sessionStart){
-        this.sessionStart = sessionStart
+        this.sessionStart = sessionStart;
     }
     setSessionEnd(sessionEnd){
-        this.sessionEnd = sessionEnd
+        this.sessionEnd = sessionEnd;
     }
     setSection(section){
-        this.section = section
+        this.section = section;
     }
     setIsVisit(isVisit){
-        this.isVisit = isVisit
+        this.isVisit = isVisit;
     }
     setUserDefined(userDefined){
-        this.userDefined = userDefined
+        this.userDefined = userDefined;
     }
 
     getVisitorId(){
-        return this.visitorId
+        return this.visitorId;
     }
     getSessionStart(){
-        return this.sessionStart
+        return this.sessionStart;
     }
     getSessionEnd(){
-        return this.sessionEnd
+        return this.sessionEnd;
     }
     getSection(){
-        return this.section
+        return this.section;
     }
     getIsVisit(){
-        return this.isVisit
+        return this.isVisit;
     }
     getUserDefined(){
-        return this.userDefined
+        return this.userDefined;
     }
 
     sendObj(){
 
-        const axios = require('axios')
-        const https = require('https')
+        const axios = require('axios');
+        const https = require('https');
 
         const agent = new https.Agent({  
             rejectUnauthorized: false
@@ -70,7 +70,7 @@ module.exports = class {
         )
         .then((res) => {
         console.log(`statusCode: ${res.statusCode}`)
-        console.log(res)
+        console.log(res);
         })
         .catch((error) => {
         console.error(error)
