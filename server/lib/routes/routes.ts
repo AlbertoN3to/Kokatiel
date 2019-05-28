@@ -21,7 +21,7 @@ export class Routes {
         //     .put(this.visitsController.updateVisit)
         //     .delete(this.visitsController.deleteVisit);
         
-        app.route('/statistics/sales')
+        app.route('/statistics/:originUrl/sales')
             .get(this.statisticsController.getSalesBySector);
     }
 }

@@ -7,7 +7,7 @@ const Data = mongoose.model('Data', DataSchema);
 export class StatisticsController {
 
     public getSalesBySector(req: Request, res: Response) {
-        Data.aggregate([{$match:{originUrl:req.body.originUrl,isVisit:false}},{$group:{_id:"$section",count: {$sum:1}}}],(err,results)=>{
+        Data.aggregate([{$match:{originUrl:req.params.visitorId,isVisit:false}},{$group:{_id:"$section",count: {$sum:1}}}],(err,results)=>{
             if (err) { res.send(err); }
             res.json(results);
         });
