@@ -20,16 +20,19 @@ export class Routes {
             .get(this.dataController.getDataById);
 
         app.route('/statistics/:originUrl/sales')
-            .get(this.accessController.validateLogin,this.statisticsController.getSalesBySector);
+            .get(this.statisticsController.getSalesBySector);
 
         app.route('/statistics/:originUrl/sales/visits')
-            .get(this.accessController.validateLogin,this.statisticsController.getSalesWithVisits);
+            .get(this.statisticsController.getSalesWithVisits);
 
         app.route('/login')
             .post(this.accessController.login)
         
         app.route('/createuser')
-            .post(this.accessController.createUser)    
+            .post(this.accessController.createUser)
+        
+        app.route('/kokatiel.js')
+            .get(this.dataController.sendKokatiel)
     }
 }
 

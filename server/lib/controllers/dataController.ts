@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 import { DataSchema } from '../models/dataModel';
 import { Request, Response } from 'express';
+import { ESRCH } from 'constants';
 
 const Data = mongoose.model('Data', DataSchema);
 
@@ -18,7 +19,9 @@ export class DataController {
             res.json(Data);
         });
     }
-
+    public sendKokatiel(req: Request, res: Response) {
+        res.sendFile(__dirname+"../../../snippet/kokatiel.js");
+    }
     public getData(req: Request, res: Response) {
         Data.find({}, (err, data) => {
             if (err) {
