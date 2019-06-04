@@ -1,4 +1,5 @@
 import { DataController } from '../controllers/dataController';
+import { AccessController } from '../controllers/accessController';
 import { StatisticsController } from '../controllers/statisticsController';
 import { Request, Response, NextFunction } from 'express';
 var PRIVATE = require('../../config/private.json');
@@ -6,23 +7,29 @@ var PRIVATE = require('../../config/private.json');
 export class Routes {
 
     public dataController: DataController = new DataController();
+    public accessController: AccessController = new AccessController();
     public statisticsController: StatisticsController = new StatisticsController();
 
     public routes(app): void {
 
         app.route('/data')
             .post(this.dataController.addNewData)
-        // app.route('/visits/')
-        //     .post(this.visitsController.addNewVisit)
-             .get(this.dataController.getData);
+            .get(this.dataController.getData);
 
         app.route('/data/:visitorId')
-             .get(this.dataController.getDataById);
-        //     .put(this.visitsController.updateVisit)
-        //     .delete(this.visitsController.deleteVisit);
-        
+            .get(this.dataController.getDataById);
+
         app.route('/statistics/:originUrl/sales')
-            .get(this.statisticsController.getSalesBySector);
+            .get(this.accessController.validateLogin,this.statisticsController.getSalesBySector);
+
+        app.route('/statistics/:originUrl/sales/visits')
+            .get(this.accessController.validateLogin,this.statisticsController.getSalesWithVisits);
+
+        app.route('/login')
+            .post(this.accessController.login)
+        
+        app.route('/createuser')
+            .post(this.accessController.createUser)    
     }
 }
 

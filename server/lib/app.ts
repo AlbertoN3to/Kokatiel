@@ -1,12 +1,13 @@
 import * as express from 'express';
 import { Routes } from "./routes/routes";
 import * as mongoose from 'mongoose';
+import * as cookieParser from 'cookie-parser';
 
 class App {
     
     public app: express.Application;
     public routePrv: Routes = new Routes();
-    public mongoUrl: string = 'mongodb://mongo:27017/KokatielDB'
+    public mongoUrl: string = 'mongodb://localhost:27017/KokatielDB'
 
 
     constructor() {
@@ -24,7 +25,7 @@ class App {
 
     private config(): void{
         this.app.use(express.json());
-
+        this.app.use(cookieParser());
         this.app.use(express.urlencoded({extended:false}));
     }
 }
