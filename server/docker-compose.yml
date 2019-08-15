@@ -1,0 +1,37 @@
+version: '3'
+services:
+    mongo:
+        image: mongo
+        restart: always
+        expose:
+            - "27017"
+        ports:
+            - "27017:27017"
+        container_name: kokatiel-db
+        volumes:
+            - data-volume:/data/db
+        networks:
+            - kokatiel-network
+
+    server:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: kokatiel-server
+        command: bash -c "cd server && npm i && npm run dev"
+        volumes:
+           - "./server:/appserver/server"
+        expose:
+            - "3000"
+        ports:
+            - "3000:3000"
+        networks:
+            - kokatiel-network
+        depends_on:
+            - mongo
+
+
+networks:
+    kokatiel-network:
+  
+
